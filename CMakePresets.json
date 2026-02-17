@@ -1,0 +1,30 @@
+{
+  "version": 3,
+  "configurePresets": [
+    {
+      "name": "vs2026-vcpkg",
+      "displayName": "Visual Studio 2026 + vcpkg",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/out/build/${presetName}",
+      "cacheVariables": {
+        "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+        "VCPKG_TARGET_TRIPLET": "x64-windows"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "build",
+      "configurePreset": "vs2026-vcpkg"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "test",
+      "configurePreset": "vs2026-vcpkg",
+      "output": {
+        "outputOnFailure": true
+      }
+    }
+  ]
+}
